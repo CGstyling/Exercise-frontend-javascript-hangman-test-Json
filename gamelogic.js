@@ -1,13 +1,31 @@
 function displayWordSoFar(word, guesses) {
-  // WRITE ME
+  let wordToUser = "";
+  for( let i = 0; i < word.length; i++) {
+    if (guesses.includes(word[i])) {
+      //yaaaay! we have a good gues
+      wordToUser = wordToUser + word[i] + " ";
+    } else {
+      wordToUser = wordToUser + "_ ";
+      //sorry you dit not guess the letter, so print _
+    }
+  }
+  return wordToUser;
 }
 
 function isGameWon(word, guesses) {
-  // WRITE ME
+  //let wordOutCome = displayWordSoFar(word, guesses);
+  //wordOutCome = wordOutCome.split(" ").join("");
+  //return wordOutCome === word;
+
+  return displayWordSoFar(word, guesses).split(" ").join("") === word;
 }
 
 function isGameLost(word, guesses) {
-  // WRITE ME
+  if (guesses.length >= 7 ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 module.exports = {

@@ -27,7 +27,8 @@ test("displayWordSoFar should display the letters guessed so far", () => {
 test("isGameWon should return false when all letters have not been guessed yet", () => {
   // ARRANGE
   const word = "javascript";
-  const guesses = [];
+  let guesses = ["j"];
+
 
   // ACT
   const gameWon = isGameWon(word, guesses);
@@ -39,7 +40,8 @@ test("isGameWon should return false when all letters have not been guessed yet",
 test("isGameWon should return true when all letters have been guessed", () => {
   // ARRANGE
   const word = "javascript";
-  const guesses = ["j", "a", "v", "s", "c", "r", "i", "p", "t"];
+  let guesses = ["x", "j", "a", "v", "s", "c", "r", "i", "p", "t"];
+
 
   // ACT
   const gameWon = isGameWon(word, guesses);
