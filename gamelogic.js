@@ -1,3 +1,6 @@
+let numberOfWrongGuesses = 0;
+let guessedWord;
+
 function displayWordSoFar(word, guesses) {
   let wordToUser = "";
   for( let i = 0; i < word.length; i++) {
@@ -13,19 +16,22 @@ function displayWordSoFar(word, guesses) {
 }
 
 function isGameWon(word, guesses) {
-  //let wordOutCome = displayWordSoFar(word, guesses);
-  //wordOutCome = wordOutCome.split(" ").join("");
-  //return wordOutCome === word;
-
   return displayWordSoFar(word, guesses).split(" ").join("") === word;
 }
 
 function isGameLost(word, guesses) {
-  if (guesses.length >= 7 ) {
-    return true;
-  } else {
-    return false;
+  let wrongGuesses = [];
+  let wordArray = word.split("");
+
+  //Identify uniquely wrong guessed numbers
+  for( let i = 0; i < guesses.length; i++) {
+      if(!wordArray.includes(guesses[i])){
+        if(!wrongGuesses.includes(guesses[i])){
+          wrongGuesses.push(guesses[i]);
+        }
+      }
   }
+  return wrongGuesses.length >= 7;
 }
 
 module.exports = {
